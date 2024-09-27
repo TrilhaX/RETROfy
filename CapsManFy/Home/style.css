@@ -1,0 +1,225 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+body{
+    background-color: black;
+}
+
+header{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+nav ul{
+    list-style-type: none;
+    display: flex;
+    flex-direction: row;
+}
+
+li{
+    margin-top: 10px;
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    margin-bottom: 15px;
+    gap: 320px;
+}
+
+nav{
+    display: flex;
+    flex-direction: row;
+}
+
+section{
+    display: flex;
+    flex-direction: row;
+}
+
+a{
+    text-decoration: none;
+}
+
+#imagemLogo {
+    max-width: 7vw;
+    max-height: 7vh;
+}
+
+#buscaIMG{
+    max-width: 4vw;
+    max-height: 4vh;
+    margin-right: 3px;
+    cursor: pointer;
+}
+
+#contaImg{
+    max-width: 7vw;
+    max-height: 7vh;
+    background-color: white;
+    border: 5px solid white;
+    border-radius: 10px;
+}
+
+#hrDivisao{
+    rotate: 90;
+}
+
+.apresentaçãoEquipe{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    cursor: pointer;
+    gap: 10px;
+}
+
+.pesquisaDiv {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    text-align: center;
+    border-radius: 10px;
+    gap: 5px;
+    border: 1px solid white;
+    background-color: gray;
+}
+
+.pesquisaDiv input{
+    background-color: rgb(83, 82, 82);
+    border: 1px solid rgb(83, 82, 82);
+    border-radius: 5px;
+    padding: 5px 200px 5px 5px;
+    margin: 5px 3px 5px 5px;
+    cursor: pointer;
+    color: white;
+}
+
+.apresentaçãoEquipe h1 {
+    background: linear-gradient(45deg, #e440ff, #ff4ccd, #ff9845);
+    -webkit-background-clip: text;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-family: "Inter", sans-serif;
+    font-style: italic;
+}
+
+.restoHeader{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.mainSite {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    text-align: left;
+    margin-top: 15px;
+    margin-left: 50px;
+}
+
+.carrossel {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    overflow-x: hidden;
+}
+
+.carroselButton{
+    align-items: center;
+    gap: 10px;
+    display: flex;
+    flex-direction: row;
+}
+
+.slide-active{
+    cursor: pointer;
+}
+
+.slide{
+    cursor: pointer;
+}
+
+.slides {
+    z-index: 0;
+    display: flex;
+    flex-direction: row;
+    transition: transform 0.5s ease;
+}
+
+button {
+    z-index: 1;
+    color: white;
+    transform: translateY(-50%);
+    background-color: rgba(255, 255, 255, 0);
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.prev {
+    left: 10px;
+}
+
+.next {
+    right: 10px;
+}   
+
+.musicaInfo{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.musica{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 30px;
+}
+
+.musica h1{
+    color: white;
+    margin-top: 10px;
+    margin-bottom: 10px; 
+}
+
+.novasMusicasDiv{
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    margin-top: 10px;
+}
+
+.novasMusicasDiv h1{
+    color: white;
+    font-family: 'Courier New', Courier, monospace;
+    cursor: pointer;
+    width: 14vw;
+}
+
+.playlistDiv{
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    margin-top: 10px;
+    margin-bottom: 15px;
+}
+
+.playlistDiv h1{
+    color: white;
+    font-family: 'Courier New', Courier, monospace;
+    cursor: pointer;
+    width: 9vw;
+}
+
+.musicas{
+    cursor: pointer;
+}
+
+.playlist{
+    cursor: pointer;
+}
