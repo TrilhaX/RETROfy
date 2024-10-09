@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RETROfy - Login/Cadastro</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <img src="../Login/imagens/aaaaaaaaaaa-removebg-preview (1).png" alt="">
+    <hr>
+    <h1>RETROfy</h1>
+    <hr>
+    <div class="container">
+        <div class="form-container">
+            <form id="login-form">
+                <h2>Login</h2>
+                <input type="email" placeholder="Email" required id="emailInput1">
+                <input type="password" placeholder="Senha" required id="passwordInput1">
+                <button type="submit" id="buttonSubmit1">Entrar</button>  
+                <p>Não tem uma conta? <a href="#" id="show-register">Cadastre-se</a></p>
+            </form>            
+
+            <form id="register-form" class="hidden">
+                <h2>Cadastro</h2>
+                <input type="text" placeholder="Nome" required id="nameInput2">
+                <input type="email" placeholder="Email" required id="emailInput2">
+                <input type="password" placeholder="Senha" required id="passwordInput2">
+                <input type="password" placeholder="Confirmar Senha" required id="confirmarSenha">
+                <button type="submit" id="buttonSubmit2">Cadastrar</button>
+                <h3 style="display: none;" id="erroMensagem">Erro</h3>
+                <p>Já tem uma conta? <a href="#" id="show-login">Login</a></p>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="https://accounts.google.com/gsi/client"></script>    
+    <!--HTML e CSS Feito-->
+</body>
+</html>
