@@ -29,13 +29,25 @@ carousels.forEach((carousel, index) => {
     window[`previousSlide${index}`] = previousSlide;
 });
 
+function accountInfo(){
+    let account = window.sessionStorage.getItem('usuarioLogado');
+
+    account = JSON.parse(account)
+    console.log(account.name)
+}
+
 function abrirDisplayMusica(){
     let display = document.querySelector(".musicaPlay")
     display.style.display = "flex"
 }
 
+function abrirConta(){
+    window.location.href = "../Conta/index.html"
+}
+
 document.querySelector("#slideP").addEventListener("click", abrirDisplayMusica)
 document.querySelector("#slideM").addEventListener("click", abrirDisplayMusica)
+document.querySelector("#imagemConta").addEventListener("click", abrirConta)
 
 document.querySelectorAll('.prev').forEach((button, i) => {
     button.onclick = () => {
@@ -48,3 +60,5 @@ document.querySelectorAll('.next').forEach((button, i) => {
         window[`nextSlide${i}`]();
     };
 });
+
+accountInfo()
