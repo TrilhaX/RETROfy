@@ -104,11 +104,6 @@ p {
     font-size: 15px;
 }
 
-#login-form{
-    display: flex;
-    flex-direction: column;
-}
-
 a{
     color: blue;
     text-decoration: underline;

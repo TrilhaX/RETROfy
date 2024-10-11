@@ -59,7 +59,9 @@ function loginUser(event) {
         return;
     }
 
-    if (usuario.senha === password) {
+    if (atob(usuario.senha) === password) {
+        sessionStorage.setItem('usuarioLogado', JSON.stringify(usuario));
+        console.log("sessionStorage atualizado: ", sessionStorage.getItem('usuarioLogado'));
         window.location.href = "../home/index.html";
     } else {
         errorMessage.innerHTML = "Email ou senha incorretos.";
