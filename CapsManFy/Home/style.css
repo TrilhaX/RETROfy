@@ -79,6 +79,10 @@ a{
     rotate: 90;
 }
 
+#addButton{
+    margin-left: 10px;
+}
+
 .apresentaçãoEquipe{
     display: flex;
     flex-direction: row;
@@ -153,15 +157,19 @@ a{
     cursor: pointer;
 }
 
+.slide-active img{
+    height: 30vh;
+}
+
 .slide{
     cursor: pointer;
 }
 
 .slides {
-    width: 100%;
     z-index: 0;
     display: flex;
     flex-direction: row;
+    align-items: center;
     transition: transform 0.5s ease;
 }
 .carroselButton button {

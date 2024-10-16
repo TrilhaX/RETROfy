@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RETROfy</title>
+    <link rel="stylesheet" href="../musica/style.css">
+    <link rel="icon" type="image/x-icon" href="../Home/imagens/aaaaaaaaaaa-removebg-preview (1).png">
+</head>
+<body>
+    <div class="container">
+        <h1 id="tituloH1">Cadastro de Música</h1>
+        <form>
+            <div class="form-group">
+                <label for="titulo">Título:</label>
+                <input type="text" id="titulo" name="titulo" required>
+            </div>
+            <div class="form-group">
+                <label for="artista">Artista:</label>
+                <input type="text" id="artista" name="artista" required>
+            </div>
+            <div class="form-group">
+                <label for="genero">Gênero:</label>
+                <input type="text" id="genero" name="genero" required>
+            </div>
+            <div class="form-group">
+                <label for="duracao">Duração (minutos):</label>
+                <input type="number" id="duracao" name="duracao" step="0.1" required>
+            </div>
+            <div class="form-group">
+                <label for="link">Link da Música:</label>
+                <input type="url" id="link" name="link" required>
+            </div>
+            <div class="form-group">
+                <input type="file" id="imagem" accept="image/*">
+            </div>            
+            <button type="submit" id="cadastrarMusica">Cadastrar Música</button>
+            <h1 id="erroH1"></h1>
+        </form>
+    </div>
+
+    <script src="../musica/script.js"></script>
+</body>
+</html>

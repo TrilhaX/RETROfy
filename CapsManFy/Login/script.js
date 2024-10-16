@@ -1,4 +1,3 @@
-let conta = null;
 let submitCadastro = document.querySelector('#register-form .button');
 let submitLogin = document.querySelector('#login-form .button');
 
@@ -11,6 +10,7 @@ function addUser(event) {
     let password = document.querySelector('#passwordInput2').value;
     let confirmPassword = document.querySelector('#confirmarSenha').value;
     let errorMessage = document.querySelector("#erroMensagem");
+    
     errorMessage.style.display = 'none';
     errorMessage.innerHTML = '';
 
@@ -33,7 +33,7 @@ function addUser(event) {
         return;
     }
 
-    conta = { name, email, senha: btoa(password), playlist: [] };
+    let conta = { name, email, senha: btoa(password), playlist: [] };
     users.push(conta);
     localStorage.setItem('usuarios', JSON.stringify(users));
     console.log("Cadastro realizado com sucesso!");
@@ -49,8 +49,15 @@ function loginUser(event) {
     let email = document.getElementById('emailInput1').value;
     let password = document.getElementById('passwordInput1').value;
     let errorMessage = document.querySelector("#erroMensagem");
+
     errorMessage.style.display = 'none';
     errorMessage.innerHTML = '';
+
+    if (email === "" || password === "") {
+        errorMessage.innerHTML = "Você precisa preencher todos os campos!";
+        errorMessage.style.display = 'block';
+        return;
+    }
 
     let usuario = users.find(user => user.email === email);
     if (!usuario) {
@@ -68,8 +75,6 @@ function loginUser(event) {
         errorMessage.style.display = 'block';
     }
 }
-
-
 
 document.getElementById('show-register').addEventListener('click', function(event) {
     event.preventDefault();

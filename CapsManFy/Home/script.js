@@ -1,4 +1,7 @@
+let musica = null;
 const carousels = document.querySelectorAll('.carrossel');
+let musicas = JSON.parse(localStorage.getItem('musicas')) || [];
+let musicContainer = document.querySelector(".slides")
 
 carousels.forEach((carousel, index) => {
     const slides = carousel.querySelectorAll('.slide');
@@ -45,9 +48,43 @@ function abrirConta(){
     window.location.href = "../Conta/index.html"
 }
 
-document.querySelector("#slideP").addEventListener("click", abrirDisplayMusica)
-document.querySelector("#slideM").addEventListener("click", abrirDisplayMusica)
+function abrirAddMusica(){
+    window.location.href = "../musica/index.html"
+}function createMusicDiv(title, imageUrl) {
+    const newDiv = document.createElement('div');
+    newDiv.classList.add('slide-active');
+
+    const img = document.createElement('img');
+    img.src = imageUrl;
+    img.alt = title;
+
+    const a = document.createElement('a');
+    const musics = JSON.parse(localStorage.getItem('musicas')) || [];
+    
+    // Find the music object by title
+    const music = musics.find(music => music.nome === title);
+    
+    if (music) {
+        a.href = music.link;
+    } else {
+        console.warn(`No music found for title: ${title}`);
+    }
+
+    a.appendChild(img);
+    newDiv.appendChild(a);
+    musicContainer.appendChild(newDiv);
+}
+
+
+function displayMusics() {
+    const musics = JSON.parse(localStorage.getItem('musicas')) || [];
+    musics.forEach(music => {
+        createMusicDiv(music.nome, music.imagem);
+    });
+}
+
 document.querySelector("#imagemConta").addEventListener("click", abrirConta)
+document.querySelector("#addButton").addEventListener("click", abrirAddMusica)
 
 document.querySelectorAll('.prev').forEach((button, i) => {
     button.onclick = () => {
@@ -61,4 +98,6 @@ document.querySelectorAll('.next').forEach((button, i) => {
     };
 });
 
-accountInfo()
+
+displayMusics();
+abrirMusicaPlay();
