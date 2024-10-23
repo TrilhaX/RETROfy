@@ -104,6 +104,12 @@ p {
     font-size: 15px;
 }
 
+#erroMensagem1{
+    color: red;
+    margin-top: 5px;
+    font-size: 15px;
+}
+
 a{
     color: blue;
     text-decoration: underline;

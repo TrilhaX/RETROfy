@@ -9,13 +9,21 @@ function addUser(event) {
     let email = document.querySelector('#emailInput2').value;
     let password = document.querySelector('#passwordInput2').value;
     let confirmPassword = document.querySelector('#confirmarSenha').value;
-    let errorMessage = document.querySelector("#erroMensagem");
-    
+    let errorMessage = document.querySelector("#erroMensagem1");
+
     errorMessage.style.display = 'none';
     errorMessage.innerHTML = '';
 
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
     if (!email || !password) {
         errorMessage.innerHTML = "Email e senha são obrigatórios.";
+        errorMessage.style.display = 'block';
+        return;
+    }
+
+    if (!emailRegex.test(email)) {
+        errorMessage.innerHTML = "Por favor, insira um email válido.";
         errorMessage.style.display = 'block';
         return;
     }
@@ -38,11 +46,15 @@ function addUser(event) {
     localStorage.setItem('usuarios', JSON.stringify(users));
     console.log("Cadastro realizado com sucesso!");
 
+    document.getElementById('register-form').classList.add('hidden');
+    document.getElementById('login-form').classList.remove('hidden');
+
     document.querySelector('#nameInput2').value = '';
     document.querySelector('#emailInput2').value = '';
     document.querySelector('#passwordInput2').value = '';
     document.querySelector('#confirmarSenha').value = '';
 }
+
 
 function loginUser(event) {
     event.preventDefault();
@@ -83,12 +95,6 @@ document.getElementById('show-register').addEventListener('click', function(even
 });
 
 document.getElementById('show-login').addEventListener('click', function(event) {
-    event.preventDefault();
-    document.getElementById('register-form').classList.add('hidden');
-    document.getElementById('login-form').classList.remove('hidden');
-});
-
-document.getElementById('buttonSubmit2').addEventListener('click', function(event) {
     event.preventDefault();
     document.getElementById('register-form').classList.add('hidden');
     document.getElementById('login-form').classList.remove('hidden');

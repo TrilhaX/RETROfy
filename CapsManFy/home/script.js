@@ -12,6 +12,10 @@ document.addEventListener('DOMContentLoaded', () => {
         display.style.display = "flex";
     }
 
+    function abrirMusicaSet(){
+        window.location.href = "../musica/index.html";
+    }
+
     carousels.forEach((carousel, index) => {
         const slides = carousel.querySelectorAll('.slide');
         let currentSlide = 0;
@@ -43,8 +47,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     audioPlayer.addEventListener('timeupdate', () => {
         if (audioPlayer.duration) {
-            const percent = (audioPlayer.currentTime / audioPlayer.duration) * 100; // Calcula o percentual
-            progressBar.style.width = `${percent}%`; // Atualiza a largura da barra de progresso
+            const percent = (audioPlayer.currentTime / audioPlayer.duration) * 100;
+            progressBar.style.width = `${percent}%`;
         }
     });
 
@@ -108,6 +112,8 @@ document.addEventListener('DOMContentLoaded', () => {
             createMusicDiv(music.nome, music.imagem, music.mp3);
         });
     }
+
+    document.getElementById('addButton').addEventListener('click', abrirMusicaSet);
 
     displayMusics();
 });
