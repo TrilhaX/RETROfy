@@ -48,6 +48,8 @@ function addUser(event) {
 
     document.getElementById('register-form').classList.add('hidden');
     document.getElementById('login-form').classList.remove('hidden');
+    document.querySelector("#erroMensagem").style.display = 'none';
+    document.querySelector("#erroMensagem").innerHTML = '';
 
     document.querySelector('#nameInput2').value = '';
     document.querySelector('#emailInput2').value = '';
@@ -76,6 +78,11 @@ function loginUser(event) {
         errorMessage.innerHTML = "Você precisa cadastrar primeiro.";
         errorMessage.style.display = 'block';
         return;
+    }
+
+    if (atob(usuario.senha) !== password || usuario.email !== email){
+        errorMessage.innerHTML = "Email ou senha invalidos!";
+        errorMessage.style.display = 'block';
     }
 
     if (atob(usuario.senha) === password) {
