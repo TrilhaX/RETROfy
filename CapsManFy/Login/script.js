@@ -88,5 +88,11 @@ document.getElementById('show-login').addEventListener('click', function(event) 
     document.getElementById('login-form').classList.remove('hidden');
 });
 
+document.getElementById('buttonSubmit2').addEventListener('click', function(event) {
+    event.preventDefault();
+    document.getElementById('register-form').classList.add('hidden');
+    document.getElementById('login-form').classList.remove('hidden');
+});
+
 document.querySelector('#buttonSubmit2').addEventListener('click', addUser);
 document.querySelector('#buttonSubmit1').addEventListener('click', loginUser);

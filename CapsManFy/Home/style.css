@@ -5,6 +5,7 @@
 
 body{
     background-color: black;
+    overflow-y: hidden;
 }
 
 header{
@@ -77,6 +78,7 @@ a{
 
 #hrDivisao{
     rotate: 90;
+    height: 100vh;
 }
 
 #addButton{
@@ -165,6 +167,12 @@ a{
     cursor: pointer;
 }
 
+.slide img{
+    width: 20vw;
+    height: 30vh;
+    object-fit: cover;
+}
+
 .slides {
     z-index: 0;
     display: flex;
@@ -208,6 +216,7 @@ a{
     align-items: center;
     text-align: center;
     padding: 30px;
+    gap: 50px;
 }
 
 .musica h1{
@@ -219,6 +228,18 @@ a{
 .musicaUserControl{
     display: flex;
     flex-direction: row;
+    gap: 20px;
+}
+.musicaUserControl button {
+    background-color: white;
+    border: solid 1px white;
+    border-radius: 10px;
+    color: black;
+    padding: 10px;
+}
+
+.musicaInfo img{
+    width: 20vw;
 }
 
 .novasMusicasDiv{
@@ -256,4 +277,68 @@ a{
 
 .playlist{
     cursor: pointer;
+}
+
+.audio-container {
+    width: 300px;
+    margin: 50px auto;
+    background-color: #f3f3f3;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+audio {
+    width: 100%;
+    height: 40px;
+    outline: none;
+    border-radius: 5px;
+}
+
+.audio-controls {
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.btn {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.btn:hover {
+    background-color: #0056b3;
+}
+
+.progress-container {
+    width: 100%;
+    height: 10px;
+    background-color: white;
+    border-radius: 5px;
+    position: relative;
+    overflow: hidden;
+}
+
+.progress-background {
+    width: 100%;
+    height: 100%;
+    background-color: #e0e0e0;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.progress-bar {
+    width: 0;
+    height: 100%;
+    background-color: #3f51b5;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: width 0.1s ease;
 }

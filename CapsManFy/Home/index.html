@@ -17,9 +17,7 @@
                 <li>
                     <div class="apresentaçãoEquipe">
                         <img src="../Home/imagens/aaaaaaaaaaa-removebg-preview (1).png" alt="" id="imagemLogo">
-                        <h1>
-                            RETROfy
-                        </h1>
+                        <h1>RETROfy</h1>
                     </div>
                     <div class="restoHeader">
                         <div class="pesquisaDiv">
@@ -40,24 +38,28 @@
             <div class="musicaPlay" style="display: none;">
                 <div class="musica">
                     <div class="musicaInfo">
-                        
+                        <img src="" alt="Capa da música" id="musicaImagem">
+                        <p id="musicaNome">Nome da Música</p>
                     </div>
                     <div class="musicaUserControl">
-                        <input type="image" id="inputPrevMusica">
-                        <input type="image" id="inputPlay">
-                        <input type="image" id="inputNextMusica" src="../Home/imagens/download-removebg-preview (1) (1).png">
+                        <button id="btnPrevMusica">Anterior</button>
+                        <button id="btnPlayPause">Pause</button>
+                        <button id="btnNextMusica">Próxima</button>
                     </div>
-                </div>
+                    <div class="progress-container">
+                        <div class="progress-background"></div>
+                        <div class="progress-bar" id="progressBar"></div>
+                    </div>
+                </div>         
                 <hr id="hrDivisao">
-            </div>
+            </div>            
             <div class="mainSite">
                 <div class="novasMusicasDiv">
                     <h1>Novas Músicas</h1>
                     <div class="carroselButton">
                         <button class="prev" onclick="previousSlide(0)">&#10094;</button>
                         <div class="carrossel" id="carousel1">
-                            <div class="slides">
-                            </div>
+                            <div class="slides"></div>
                             <button id="addButton">Adicionar Musica</button>
                         </div>
                         <button class="next" onclick="nextSlide(0)">&#10095;</button>
@@ -68,15 +70,16 @@
                     <div class="carroselButton">
                         <button class="prev" onclick="previousSlide(1)">&#10094;</button>
                         <div class="carrossel" id="carousel2">
-                            <div class="slides">
-                            </div>
+                            <div class="slides"></div>
                         </div>
                         <button class="next" onclick="nextSlide(1)">&#10095;</button>
                     </div>
                 </div>                               
+            </div>
         </section>
     </main>
 
+    <audio id="audioPlayer" controls style="display: none;"></audio>
     <script src="../Home/script.js"></script>
 </body>
 </html>

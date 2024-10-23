@@ -1,103 +1,113 @@
-let musica = null;
-const carousels = document.querySelectorAll('.carrossel');
-let musicas = JSON.parse(localStorage.getItem('musicas')) || [];
-let musicContainer = document.querySelector(".slides")
+document.addEventListener('DOMContentLoaded', () => {
+    let musica = null;
+    const progressBar = document.getElementById('progressBar');
+    const carousels = document.querySelectorAll('.carrossel');
+    let musicas = JSON.parse(localStorage.getItem('musicas')) || [];
+    let musicContainer = document.querySelector(".slides");
+    let audioPlayer = document.getElementById('audioPlayer');
+    let currentMusicIndex = 0;
 
-carousels.forEach((carousel, index) => {
-    const slides = carousel.querySelectorAll('.slide');
-    let currentSlide = 0;
-
-    function showSlide(i) {
-        slides.forEach((slide, j) => {
-            slide.classList.remove('active');
-            if (j === i) {
-                slide.classList.add('active');
-            }
-        });
-        const offset = -i * 100;
-        carousel.querySelector('.slides').style.transform = `translateX(${offset}%)`;
+    function abrirMusicaPlay() {
+        const display = document.querySelector(".musicaPlay");
+        display.style.display = "flex";
     }
 
-    function nextSlide() {
-        currentSlide = (currentSlide + 1) % slides.length;
-        showSlide(currentSlide);
-    }
+    carousels.forEach((carousel, index) => {
+        const slides = carousel.querySelectorAll('.slide');
+        let currentSlide = 0;
 
-    function previousSlide() {
-        currentSlide = (currentSlide - 1 + slides.length) % slides.length;
-        showSlide(currentSlide);
-    }
+        function showSlide(i) {
+            slides.forEach((slide, j) => {
+                slide.classList.remove('active');
+                if (j === i) {
+                    slide.classList.add('active');
+                }
+            });
+            const offset = -i * 100;
+            carousel.querySelector('.slides').style.transform = `translateX(${offset}%)`;
+        }
 
-    window[`nextSlide${index}`] = nextSlide;
-    window[`previousSlide${index}`] = previousSlide;
-});
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % slides.length;
+            showSlide(currentSlide);
+        }
 
-function accountInfo(){
-    let account = window.sessionStorage.getItem('usuarioLogado');
+        function previousSlide() {
+            currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+            showSlide(currentSlide);
+        }
 
-    account = JSON.parse(account)
-    console.log(account.name)
-}
-
-function abrirDisplayMusica(){
-    let display = document.querySelector(".musicaPlay")
-    display.style.display = "flex"
-}
-
-function abrirConta(){
-    window.location.href = "../Conta/index.html"
-}
-
-function abrirAddMusica(){
-    window.location.href = "../musica/index.html"
-}function createMusicDiv(title, imageUrl) {
-    const newDiv = document.createElement('div');
-    newDiv.classList.add('slide-active');
-
-    const img = document.createElement('img');
-    img.src = imageUrl;
-    img.alt = title;
-
-    const a = document.createElement('a');
-    const musics = JSON.parse(localStorage.getItem('musicas')) || [];
-    
-    // Find the music object by title
-    const music = musics.find(music => music.nome === title);
-    
-    if (music) {
-        a.href = music.link;
-    } else {
-        console.warn(`No music found for title: ${title}`);
-    }
-
-    a.appendChild(img);
-    newDiv.appendChild(a);
-    musicContainer.appendChild(newDiv);
-}
-
-
-function displayMusics() {
-    const musics = JSON.parse(localStorage.getItem('musicas')) || [];
-    musics.forEach(music => {
-        createMusicDiv(music.nome, music.imagem);
+        window[`nextSlide${index}`] = nextSlide;
+        window[`previousSlide${index}`] = previousSlide;
     });
-}
 
-document.querySelector("#imagemConta").addEventListener("click", abrirConta)
-document.querySelector("#addButton").addEventListener("click", abrirAddMusica)
+    audioPlayer.addEventListener('timeupdate', () => {
+        if (audioPlayer.duration) {
+            const percent = (audioPlayer.currentTime / audioPlayer.duration) * 100; // Calcula o percentual
+            progressBar.style.width = `${percent}%`; // Atualiza a largura da barra de progresso
+        }
+    });
 
-document.querySelectorAll('.prev').forEach((button, i) => {
-    button.onclick = () => {
-        window[`previousSlide${i}`]();
-    };
+    function createMusicDiv(title, imageUrl, mp3Url) {
+        const newDiv = document.createElement('div');
+        newDiv.classList.add('slide');
+
+        const img = document.createElement('img');
+        img.src = imageUrl;
+        img.alt = title;
+
+        const a = document.createElement('a');
+        a.href = "#";
+
+        a.onclick = function(event) {
+            event.preventDefault();
+            playMusic(mp3Url, imageUrl, title);
+        };
+
+        a.appendChild(img);
+        newDiv.appendChild(a);
+        musicContainer.appendChild(newDiv);
+    }
+
+    function playMusic(mp3Url, imageUrl, title) {
+        audioPlayer.src = mp3Url;
+        document.getElementById('musicaImagem').src = imageUrl;
+        document.getElementById('musicaNome').innerText = title;
+        audioPlayer.play();
+        document.querySelector('.musicaPlay').style.display = 'flex';
+    }
+
+    function nextMusic() {
+        currentMusicIndex = (currentMusicIndex + 1) % musicas.length;
+        const nextMusic = musicas[currentMusicIndex];
+        playMusic(nextMusic.mp3, nextMusic.imagem, nextMusic.nome);
+    }
+
+    function previousMusic() {
+        currentMusicIndex = (currentMusicIndex - 1 + musicas.length) % musicas.length;
+        const prevMusic = musicas[currentMusicIndex];
+        playMusic(prevMusic.mp3, prevMusic.imagem, prevMusic.nome);
+    }
+
+    document.getElementById('btnPlayPause').addEventListener('click', () => {
+        if (audioPlayer.src) {
+            if (audioPlayer.paused) {
+                audioPlayer.play();
+            } else {
+                audioPlayer.pause();
+            }
+        }
+    });
+
+    document.getElementById('btnNextMusica').addEventListener('click', nextMusic);
+    document.getElementById('btnPrevMusica').addEventListener('click', previousMusic);
+
+    function displayMusics() {
+        const musics = JSON.parse(localStorage.getItem('musicas')) || [];
+        musics.forEach((music) => {
+            createMusicDiv(music.nome, music.imagem, music.mp3);
+        });
+    }
+
+    displayMusics();
 });
-
-document.querySelectorAll('.next').forEach((button, i) => {
-    button.onclick = () => {
-        window[`nextSlide${i}`]();
-    };
-});
-
-
-displayMusics();
-abrirMusicaPlay();

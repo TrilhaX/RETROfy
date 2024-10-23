@@ -2,16 +2,16 @@ let musicas = JSON.parse(localStorage.getItem('musicas')) || [];
 
 function cadastrarMusica(event) {
     event.preventDefault();
-    
+
     let nome = document.getElementById('titulo').value;
     let artista = document.getElementById('artista').value;
     let genero = document.getElementById('genero').value;
     let duracao = document.getElementById('duracao').value;
-    let link = document.getElementById('link').value;
     let imagemInput = document.getElementById('imagem');
+    let mp3Input = document.getElementById('mp3');
     let erroH1 = document.getElementById('erroH1');
 
-    if (nome === "" || artista === "" || genero === "" || duracao === "" || link === "") {
+    if (nome === "" || artista === "" || genero === "" || duracao === "") {
         erroH1.innerHTML = "Todos os campos têm que estar preenchidos!";
         return;
     }
@@ -23,22 +23,27 @@ function cadastrarMusica(event) {
         return;
     }
 
-    const musica = { nome, artista, genero, duracao, link };
+    const musica = { nome, artista, genero, duracao };
 
     if (imagemInput.files.length > 0) {
-        const reader = new FileReader();
-        
-        reader.onload = function(event) {
-            musica.imagem = event.target.result; // URL base64 da imagem
+        const readerImagem = new FileReader();
+        readerImagem.onload = function(event) {
+            musica.imagem = event.target.result;
+        };
+        readerImagem.readAsDataURL(imagemInput.files[0]);
+    }
+
+    if (mp3Input.files.length > 0) {
+        const readerMp3 = new FileReader();
+        readerMp3.onload = function(event) {
+            musica.mp3 = event.target.result;
             musicas.push(musica);
             localStorage.setItem('musicas', JSON.stringify(musicas));
             console.log("Música cadastrada com sucesso!");
             window.location.href = "../Home/index.html";
         };
-
-        reader.readAsDataURL(imagemInput.files[0]); // Lê a imagem como URL base64
+        readerMp3.readAsDataURL(mp3Input.files[0]);
     } else {
-        // Se não houver imagem, ainda podemos salvar a música sem a imagem
         musicas.push(musica);
         localStorage.setItem('musicas', JSON.stringify(musicas));
         console.log("Música cadastrada com sucesso!");
