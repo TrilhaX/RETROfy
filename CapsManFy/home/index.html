@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RETROfy</title>
+    <link rel="stylesheet" href="../Home/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="../Home/imagens/aaaaaaaaaaa-removebg-preview (1).png">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li>
+                    <div class="apresentaçãoEquipe">
+                        <img src="../Home/imagens/aaaaaaaaaaa-removebg-preview (1).png" alt="" id="imagemLogo">
+                        <h1>RETROfy</h1>
+                    </div>
+                    <div class="restoHeader">
+                        <div class="pesquisaDiv">
+                            <input type="text">
+                            <img src="../Home/imagens/download-removebg-preview (1).png" alt="" id="buscaIMG">
+                        </div>
+                    </div>
+                    <button id="buttonConta">
+                        <img src="imagens/images.jfif" alt="" id="imagemConta">
+                    </button>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <hr>
+    <main>
+        <section>
+            <div class="musicaPlay" style="display: none;">
+                <div class="musica">
+                    <div class="musicaInfo">
+                        <img src="" alt="Capa da música" id="musicaImagem">
+                        <p id="musicaNome">Nome da Música</p>
+                    </div>
+                    <div class="musicaUserControl">
+                        <button id="btnPrevMusica">Anterior</button>
+                        <button id="btnPlayPause">Pause</button>
+                        <button id="btnNextMusica">Próxima</button>
+                    </div>
+                    <div class="progress-container">
+                        <div class="progress-background"></div>
+                        <div class="progress-bar" id="progressBar"></div>
+                    </div>
+                </div>         
+                <hr id="hrDivisao">
+            </div>            
+            <div class="mainSite">
+                <div class="novasMusicasDiv">
+                    <h1>Novas Músicas</h1>
+                    <div class="carroselButton">
+                        <button class="prev" onclick="previousSlide(0)">&#10094;</button>
+                        <div class="carrossel" id="carousel1">
+                            <div class="slides"></div>
+                            <button id="addButton">Adicionar Musica</button>
+                        </div>
+                        <button class="next" onclick="nextSlide(0)">&#10095;</button>
+                    </div>
+                </div>
+                <div class="playlistDiv">
+                    <h1>Playlist</h1>
+                    <div class="carroselButton">
+                        <button class="prev" onclick="previousSlide(1)">&#10094;</button>
+                        <div class="carrossel" id="carousel2">
+                            <div class="slides"></div>
+                        </div>
+                        <button class="next" onclick="nextSlide(1)">&#10095;</button>
+                    </div>
+                </div>                               
+            </div>
+        </section>
+    </main>
+
+    <audio id="audioPlayer" controls style="display: none;"></audio>
+    <script src="../Home/script.js"></script>
+</body>
+</html>
