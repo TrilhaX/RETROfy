@@ -17,7 +17,6 @@ function cadastrarMusica(event) {
     }
 
     const exists = musicas.some(m => m.nome === nome && m.artista === artista);
-
     if (exists) {
         erroH1.innerHTML = "Já existe essa música";
         return;
@@ -29,25 +28,39 @@ function cadastrarMusica(event) {
         const readerImagem = new FileReader();
         readerImagem.onload = function(event) {
             musica.imagem = event.target.result;
+            processarMp3(musica, mp3Input);
         };
         readerImagem.readAsDataURL(imagemInput.files[0]);
+    } else {
+        processarMp3(musica, mp3Input);
     }
+}
 
+function processarMp3(musica, mp3Input) {
     if (mp3Input.files.length > 0) {
         const readerMp3 = new FileReader();
         readerMp3.onload = function(event) {
             musica.mp3 = event.target.result;
-            musicas.push(musica);
-            localStorage.setItem('musicas', JSON.stringify(musicas));
-            console.log("Música cadastrada com sucesso!");
-            window.location.href = "../Home/index.html";
+            salvarMusica(musica);
         };
         readerMp3.readAsDataURL(mp3Input.files[0]);
     } else {
-        musicas.push(musica);
+        salvarMusica(musica);
+    }
+}
+
+function salvarMusica(musica) {
+    musicas.push(musica);
+    try {
         localStorage.setItem('musicas', JSON.stringify(musicas));
         console.log("Música cadastrada com sucesso!");
         window.location.href = "../home/index.html";
+    } catch (error) {
+        if (error.name === 'QuotaExceededError') {
+            alert("O armazenamento local está cheio! Por favor, libere algum espaço.");
+        } else {
+            console.error("Erro ao salvar a música:", error);
+        }
     }
 }
 
