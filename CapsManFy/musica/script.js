@@ -47,7 +47,7 @@ function cadastrarMusica(event) {
         musicas.push(musica);
         localStorage.setItem('musicas', JSON.stringify(musicas));
         console.log("Música cadastrada com sucesso!");
-        window.location.href = "../Home/index.html";
+        window.location.href = "../home/index.html";
     }
 }
 
