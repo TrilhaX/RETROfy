@@ -26,8 +26,10 @@
                         </div>
                     </div>
                     <button id="buttonConta">
-                        <img src="imagens/images.jfif" alt="" id="imagemConta">
-                    </button>
+                        <a href="../Conta/perfil.html">
+                            <img src="imagens/images.png" alt="" id="imagemConta">
+                        </a>
+                    </button>                    
                 </li>
             </ul>
         </nav>
@@ -47,8 +49,13 @@
                         <button id="btnNextMusica">Próxima</button>
                     </div>
                     <div class="progress-container">
-                        <div class="progress-background"></div>
-                        <div class="progress-bar" id="progressBar"></div>
+                        <div class="progress-background">
+                            <span id="currentTime"></span>
+                            <span>/</span>
+                            <span id="duration"></span>
+                        </div>
+                        <div class="progress-bar" id="progressBar">
+                        </div>
                     </div>
                 </div>         
                 <hr id="hrDivisao">
@@ -60,21 +67,37 @@
                         <button class="prev" onclick="previousSlide(0)">&#10094;</button>
                         <div class="carrossel" id="carousel1">
                             <div class="slides"></div>
-                            <button id="addButton">Adicionar Musica</button>
+                            <a href="../musica/index.html"><button id="addButton">Adicionar Musica</button></a>
                         </div>
                         <button class="next" onclick="nextSlide(0)">&#10095;</button>
                     </div>
                 </div>
+                <div id="playlistModal" class="playlistModal" style="display: none;">
+                    <div class="playlistModalContent">
+                        <h2>Criar Playlist</h2>
+                        <input type="text" id="playlistName" placeholder="Nome da Playlist">
+                        <div class="musicaList">
+                            <h3>Músicas Disponíveis</h3>
+                            <div id="availableMusics"></div>
+                        </div>
+                        <button id="savePlaylist">Salvar Playlist</button>
+                        <button id="cancelPlaylist">Cancelar</button>
+                    </div>
+                </div>
+                
                 <div class="playlistDiv">
-                    <h1>Playlist</h1>
+                    <h1>Playlists</h1>
                     <div class="carroselButton">
                         <button class="prev" onclick="previousSlide(1)">&#10094;</button>
                         <div class="carrossel" id="carousel2">
                             <div class="slides"></div>
+                            <button id="addPlaylistButton">
+                                <a href="../playlist/index.html">Adicionar Playlist</a>
+                            </button>
                         </div>
                         <button class="next" onclick="nextSlide(1)">&#10095;</button>
                     </div>
-                </div>                               
+                </div>                                              
             </div>
         </section>
     </main>

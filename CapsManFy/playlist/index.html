@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Criar Playlist</title>
+    <link rel="stylesheet" href="../playlist/style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li>
+                    <div class="apresentaçãoEquipe">
+                        <a href="../home/index.html">
+                            <img src="../Home/imagens/aaaaaaaaaaa-removebg-preview (1).png" alt="" id="imagemLogo">
+                            <h1>RETROfy</h1>
+                        </a>
+                    </div>
+                    <div class="restoHeader">
+                        <div class="pesquisaDiv">
+                            <input type="text">
+                            <img src="../Home/imagens/download-removebg-preview (1).png" alt="" id="buscaIMG">
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section>
+            <div class="criarPlaylistDiv">
+                <h1>Criar Playlist</h1>
+                <input type="text" id="playlistName" placeholder="Nome da Playlist">
+                
+                <div>
+                    <label for="playlistCover">Escolha a capa da playlist:</label>
+                    <input type="file" id="playlistCover" accept="image/*">
+                </div>
+
+                <div class="musicaList">
+                    <h3>Músicas Disponíveis</h3>
+                    <div id="availableMusics"></div>
+                </div>
+                
+                <div class="buttons">
+                    <button id="addPlaylistButton">Adicionar Playlist</button>
+                    <a href="../home/index.html"><button id="savePlaylist">Salvar Playlist</button></a>
+                    <button id="cancelPlaylist" onclick="window.history.back()">Cancelar</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="../playlist/script.js"></script>
+</body>
+</html>

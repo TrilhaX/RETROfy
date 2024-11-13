@@ -5,12 +5,12 @@
 
 body{
     background-color: black;
+    overflow-y: hidden;
 }
 
 header{
     display: flex;
     flex-direction: row;
-    justify-content: center;
 }
 
 nav ul{
@@ -82,10 +82,6 @@ a{
 
 #addButton{
     margin-left: 10px;
-}
-
-#carousel2{
-    gap: 10px;
 }
 
 .apresentaçãoEquipe{
@@ -320,29 +316,20 @@ audio {
 
 .progress-container {
     width: 100%;
-    height: 20px;
+    height: 10px;
     background-color: white;
     border-radius: 5px;
     position: relative;
     overflow: hidden;
-    display: flex;
-    align-items: center;
 }
 
 .progress-background {
     width: 100%;
     height: 100%;
     background-color: #e0e0e0;
-    color: black;
     position: absolute;
     top: 0;
-    left: 0;    
-    display: flex;
-    justify-content: center;
-}
-
-.progress-background span {
-    z-index: 2;
+    left: 0;
 }
 
 .progress-bar {
@@ -388,12 +375,152 @@ a{
     color: white;
 }
 
-span{
-    color: black;
+/* Estilos de Criação de Playlist */
+
+.criarPlaylistDiv {
+    max-width: 800px;
+    margin: 50px auto;
+    background-color: #1f1f1f;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    color: white;
 }
 
-.playlistCover img{
-    width: 20vw;
-    height: 30vh;
-    object-fit: cover;
+.criarPlaylistDiv h1 {
+    text-align: center;
+    font-size: 28px;
+    font-family: 'Courier New', Courier, monospace;
+    color: #ff4ccd;
+}
+
+.criarPlaylistDiv input[type="text"] {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 20px;
+    background-color: #2c2c2c;
+    border: 1px solid #444;
+    border-radius: 5px;
+    color: white;
+    font-size: 16px;
+}
+
+.criarPlaylistDiv .musicaList {
+    margin-bottom: 20px;
+}
+
+.criarPlaylistDiv .musicaOption {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px;
+    background-color: #333;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.criarPlaylistDiv .musicaOption input[type="checkbox"] {
+    accent-color: #ff4ccd;
+}
+
+.criarPlaylistDiv button {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    margin-top: 10px;
+}
+
+.criarPlaylistDiv button:hover {
+    background-color: #2980b9;
+}
+
+.criarPlaylistDiv button:active {
+    background-color: #1f6c8c;
+}
+
+.criarPlaylistDiv button:focus {
+    outline: none;
+}
+
+.criarPlaylistDiv #cancelPlaylist {
+    background-color: #e74c3c;
+}
+
+.criarPlaylistDiv #cancelPlaylist:hover {
+    background-color: #c0392b;
+}
+
+/* Modal de Seleção de Músicas */
+.playlistModalContent {
+    background-color: #2c2c2c;
+    padding: 30px;
+    border-radius: 10px;
+    width: 80%;
+    max-width: 600px;
+    color: white;
+}
+
+.playlistModalContent h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #ff4ccd;
+}
+
+.playlistModalContent .musicaList h3 {
+    font-size: 18px;
+    margin-bottom: 15px;
+    color: #ff4ccd;
+}
+
+.playlistModalContent .musicaList {
+    max-height: 250px;
+    overflow-y: auto;
+}
+
+.playlistModalContent .musicaList .musicOption {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    background-color: #333;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.playlistModalContent .musicaList .musicOption input[type="checkbox"] {
+    margin-right: 15px;
+    accent-color: #ff4ccd;
+}
+
+.playlistModalContent button {
+    width: 100%;
+    background-color: #3498db;
+    padding: 12px;
+    border-radius: 5px;
+    color: white;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.playlistModalContent button:hover {
+    background-color: #2980b9;
+}
+
+.playlistModalContent button:active {
+    background-color: #1f6c8c;
+}
+
+.playlistModalContent button:focus {
+    outline: none;
+}
+
+.buttons{
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
 }

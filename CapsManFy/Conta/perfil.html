@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="https://icons.veryicon.com/png/o/miscellaneous/administration/account-25.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sua conta</title>
+    <style>
+        body{
+            background-image: url(./imagens/fundoPerfil.png);
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        h2{
+            color: white;
+            text-align: center;
+        }
+        #buttonHome{
+            margin: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        #imagemHome{
+            width: 40px;
+            height: 40px;
+        }
+        h1 {
+            color: black;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .profile-container, .playlists-container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px auto;
+            max-width: 400px;
+        }
+        h2#Name, h2#Email{
+            color: black;
+            margin: 10px 0;
+        }
+        #buttonLogout{
+            margin: 10px auto;
+            background-color: red;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+            display: block;
+            font-size: 16px;
+        }
+        a{
+            color: white;
+            text-decoration: none;
+        }
+        .playlist-list {
+            list-style-type: none;
+            padding: 0;
+        }
+        .playlist-item {
+            background-color: #f0f0f0;
+            margin: 5px 0;
+            padding: 10px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <button id="buttonHome">
+        <a href="../home/index.html">
+            <img src="https://cdn-icons-png.flaticon.com/512/846/846449.png" alt="" id="imagemHome">
+        </a>
+    </button>     
+    <div class="profile-container">
+        <h1>Você está logado como:</h1>
+        <h2 id="Name">Nome do usuário</h2>
+        <h2 id="Email">Email</h2>
+    </div>
+    <div class="playlists-container">
+        <h1>Suas Playlists:</h1>
+        <ul class="playlist-list" id="playlistList">
+        </ul>
+    </div>
+    <button id="buttonLogout" onclick="window.location.href='../Login/index.html'">
+        Logout
+    </button>
+    <script src="../Conta/script.js" defer></script>
+</body>
+</html>
